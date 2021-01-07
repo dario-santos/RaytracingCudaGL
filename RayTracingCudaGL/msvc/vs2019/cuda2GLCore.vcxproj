@@ -29,12 +29,17 @@
     <ClInclude Include="..\..\src\gl_tools.h" />
     <ClInclude Include="..\..\src\libs\helper_cuda.h" />
     <ClInclude Include="..\..\src\libs\helper_string.h" />
+    <ClInclude Include="Assets\Worlds\World1.cuh" />
     <ClInclude Include="Engine\Camera.hpp" />
+    <ClInclude Include="Engine\Components\IWorld.hpp" />
     <ClInclude Include="Engine\Config\Config.hpp" />
     <ClInclude Include="Engine\Hitable.hpp" />
     <ClInclude Include="Engine\HitableList.hpp" />
     <ClInclude Include="Engine\Input\Input.hpp" />
     <ClInclude Include="Engine\Material.hpp" />
+    <ClInclude Include="Engine\Math\Util.cuh" />
+    <ClInclude Include="Engine\Render\Render.cuh" />
+    <ClInclude Include="Kernel.cuh" />
     <ClInclude Include="Engine\Math\Vec3.hpp" />
     <ClInclude Include="Engine\Ray.hpp" />
     <ClInclude Include="Engine\Shader\GLSLProgram.hpp" />

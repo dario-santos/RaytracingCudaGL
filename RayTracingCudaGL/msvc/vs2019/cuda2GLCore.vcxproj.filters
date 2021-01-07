@@ -42,6 +42,11 @@
     <ClInclude Include="main.hpp" />
     <ClInclude Include="Engine\Camera.hpp" />
     <ClInclude Include="Engine\Material.hpp" />
+    <ClInclude Include="Kernel.cuh" />
+    <ClInclude Include="Engine\Components\IWorld.hpp" />
+    <ClInclude Include="Assets\Worlds\World1.cuh" />
+    <ClInclude Include="Engine\Math\Util.cuh" />
+    <ClInclude Include="Engine\Render\Render.cuh" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="..\..\src\kernel.cu" />
