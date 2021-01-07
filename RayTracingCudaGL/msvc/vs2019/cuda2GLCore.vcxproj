@@ -130,13 +130,13 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;WIN64;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-Bv %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>D:\Users\dario\Desktop\cuda2GLcore-main\include\glew\include;D:\Users\dario\Desktop\cuda2GLcore-main\include\glfw\include;D:\Users\dario\Desktop\RayTracingCudaGL\include\glm;D:\Users\dario\Desktop\RayTracingCudaGL\msvc\vs2019;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glew\include;D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glfw\include;D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glm;D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\msvc\vs2019;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>cudart.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Users\dario\Desktop\cuda2GLcore-main\include\glfw\lib-vc2019;D:\Users\dario\Desktop\cuda2GLcore-main\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glfw\lib-vc2019;D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>echo copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"
@@ -174,7 +174,7 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;WIN64;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>-Bv %(AdditionalOptions)</AdditionalOptions>
-      <AdditionalIncludeDirectories>D:\Users\dario\Desktop\cuda2GLcore-main\include\glew\include;D:\Users\dario\Desktop\cuda2GLcore-main\include\glfw\include;D:\Users\dario\Desktop\RayTracingCudaGL\include\glm;D:\Users\dario\Desktop\RayTracingCudaGL\msvc\vs2019;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glew\include;D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glfw\include;D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glm;D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\msvc\vs2019;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -182,7 +182,7 @@ copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"</Command>
       <OptimizeReferences>true</OptimizeReferences>
       <SubSystem>Console</SubSystem>
       <AdditionalDependencies>cudart.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;glfw3.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>D:\Users\dario\Desktop\cuda2GLcore-main\include\glfw\lib-vc2019;D:\Users\dario\Desktop\cuda2GLcore-main\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glfw\lib-vc2019;D:\Users\dario\Documents\GitHub\RaytracingCudaGL\RayTracingCudaGL\include\glew\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <PostBuildEvent>
       <Command>echo copy "$(CudaToolkitBinDir)\cudart*.dll" "$(OutDir)"

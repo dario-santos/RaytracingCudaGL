@@ -15,12 +15,16 @@
 
 #include <Engine/Utils/CudaHelper.hpp>
 
+#include <glm/glm.hpp>
+using glm::vec3;
+
 // Variables
 Sphere** d_list;
 Sphere** d_world;
 Camera** d_camera;
 curandState* d_rand_state;
 curandState* d_rand_state2;
+float alpha = 0.0f;
 int numObjects = 1 * 22 + 1 + 3;
 
 // clamp x to range [a, b]
@@ -186,13 +190,18 @@ void create_world(Sphere** d_list, Sphere** d_world, Camera** d_camera, int nx, 
 }
 
 __global__
-void update(Sphere** world, int max_x)
+void update(Camera** d_cam, Vec3 v)
 {
   int i = threadIdx.x + blockIdx.x * blockDim.x;
-  if (i >= max_x)
-    return;
-
-  world[i]->center = Vec3(world[i]->center.x(), world[i]->center.y() + 0.01f, world[i]->center.z());
+  
+  if(i == 0)
+  {
+    Vec3 lookfrom = Vec3(v.x(), (*d_cam)->origin.z(), v.y());
+      
+    Vec3 lookat(0, 0, 0);
+    
+    (*d_cam)->UpdatePos(lookfrom, lookat, Vec3(0, 1, 0));
+  }
 }
 
 
@@ -201,30 +210,30 @@ void free_world()
 {
   for(int i = 0; i < 22 * 22 + 1 + 3; i++) 
   {
-    delete ((Sphere*)d_list[i])->mat_ptr;
-    delete d_list[i];
+    //delete ((Sphere*)d_list[i])->mat_ptr;
+    //delete d_list[i];
   }
 
-  delete* d_world;
-  delete* d_camera;
+  //delete* d_world;
+  //delete* d_camera;
 }
 
 extern "C" 
 void launch_cudaRender(dim3 blocks, dim3 threads, unsigned int* g_odata, int max_x, int max_y)
 {
-  int ns = 1;
+  int ns = 500;
 
   render_init<<<blocks, threads>>>(max_x, max_y, d_rand_state);
   checkCudaErrors(cudaGetLastError());
   checkCudaErrors(cudaDeviceSynchronize());
 
-  update<<<blocks, threads>>>(d_list, numObjects);
+  // Camera alfa
+  alpha += 0.5f;
+  Vec3 v = Vec3(glm::cos(alpha) + 5, 7.0f, 7.0f);
+
+  update<<<blocks, threads>>>(d_camera, v);
   checkCudaErrors(cudaGetLastError());
   checkCudaErrors(cudaDeviceSynchronize());
-
-  checkCudaErrors(cudaGetLastError());
-  checkCudaErrors(cudaDeviceSynchronize());
-
 
   render<<<blocks, threads>>>(g_odata, max_x, max_y, ns, d_camera, d_world, d_rand_state);
   checkCudaErrors(cudaGetLastError());

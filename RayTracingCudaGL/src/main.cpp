@@ -141,7 +141,6 @@ void generateCUDAImage()
 	dim3 blocks(WIDTH/tx+1, HEIGHT/ty+1); // 2D grid, every thread will compute a pixel
 	dim3 threads(tx, ty);
 
-
 	launch_cudaRender(blocks, threads, (unsigned int *) cuda_dev_render_buffer, WIDTH, HEIGHT); // launch with 0 additional shared memory allocated
 
 	// We want to copy cuda_dev_render_buffer data to the texture
@@ -184,43 +183,6 @@ void display(void)
 	glfwSwapBuffers(window);
 }
 
-	/*
-void createWorld(Sphere** list, Sphere** world, Camera** camera)
-{
-	list[0] = new Sphere(Vec3(0, -1000.0, -1), 1000, new Lambertian(Vec3(0.5, 0.5, 0.5)));
-	int i = 1;
-
-	for (int a = 0; a < 1; a++)
-	{
-		for (int b = -11; b < 11; b++)
-		{
-			float choose_mat = rand();
-			Vec3 center(a + rand(), 0.2, b + rand());
-
-			// Choose material
-			if (choose_mat < 0.8f)
-				list[i++] = new Sphere(center, 0.2, new Lambertian(Vec3(rand() * rand(), rand() * rand(), rand() * rand())));
-			else if (choose_mat < 0.95f)
-				list[i++] = new Sphere(center, 0.2, new Metal(Vec3(0.5f * (1.0f + rand()), 0.5f * (1.0f + rand()), 0.5f * (1.0f + rand())), 0.5f * rand()));
-			else
-				list[i++] = new Sphere(center, 0.2, new Dielectric(1.5));
-		}
-	}
-
-	list[i++] = new Sphere(Vec3(0, 1, 0), 1.0, new Dielectric(1.5));
-	list[i++] = new Sphere(Vec3(-4, 1, 0), 1.0, new Lambertian(Vec3(0.4, 0.2, 0.1)));
-	list[i++] = new Sphere(Vec3(4, 1, 0), 1.0, new Metal(Vec3(0.7, 0.6, 0.5), 0.0));
-
-	*world = new HitableList(list, 1 * 22 + 1 + 3);
-
-	Vec3 lookfrom(13, 2, 3);
-	Vec3 lookat(0, 0, 0);
-	float dist_to_focus = 10.0; (lookfrom - lookat).length();
-	float aperture = 0.1;
-	*camera = new Camera(lookfrom, lookat, Vec3(0, 1, 0), 30.0, float(WIDTH) / float(HEIGHT), aperture, dist_to_focus);
-}
-	*/
-
 int main(int argc, char *argv[]) 
 {
 	initGLFW();
@@ -236,7 +198,6 @@ int main(int argc, char *argv[])
 	
 	// Generate world
 	create_world(WIDTH, HEIGHT, WIDTH * HEIGHT);
-
 
 	// Generate buffers
 	glGenVertexArrays(1, &VAO);
