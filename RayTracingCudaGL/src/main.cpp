@@ -8,8 +8,8 @@ using namespace std;
 
 // GLFW
 GLFWwindow* window;
-int WIDTH  = 600;
-int HEIGHT = 300;
+int WIDTH  = 800;
+int HEIGHT = 600;
 
 // OpenGL
 GLuint VBO, VAO, EBO;
@@ -34,7 +34,8 @@ GLfloat vertices[] = {
 	-1.0f, 1.0f, 0.5f, 1.0f, 1.0f, 0.0f, 0.0f, 1.0f // Top Left 
 };
 // you can also put positions, colors and coordinates in seperate VBO's
-GLuint indices[] = {  // Note that we start from 0!
+GLuint indices[] = // Note that we start from 0!
+{
 	0, 1, 3,  // First Triangle
 	1, 2, 3   // Second Triangle
 };

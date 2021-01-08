@@ -47,6 +47,9 @@
     <ClInclude Include="Assets\Worlds\World1.cuh" />
     <ClInclude Include="Engine\Math\Util.cuh" />
     <ClInclude Include="Engine\Render\Render.cuh" />
+    <ClInclude Include="Assets\Materials\Metal.hpp" />
+    <ClInclude Include="Assets\Materials\Lambertian.hpp" />
+    <ClInclude Include="Assets\Materials\Dielectric.hpp" />
   </ItemGroup>
   <ItemGroup>
     <CudaCompile Include="..\..\src\kernel.cu" />

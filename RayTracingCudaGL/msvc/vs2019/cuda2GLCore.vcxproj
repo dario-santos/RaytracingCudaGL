@@ -29,6 +29,9 @@
     <ClInclude Include="..\..\src\gl_tools.h" />
     <ClInclude Include="..\..\src\libs\helper_cuda.h" />
     <ClInclude Include="..\..\src\libs\helper_string.h" />
+    <ClInclude Include="Assets\Materials\Dielectric.hpp" />
+    <ClInclude Include="Assets\Materials\Lambertian.hpp" />
+    <ClInclude Include="Assets\Materials\Metal.hpp" />
     <ClInclude Include="Assets\Worlds\World1.cuh" />
     <ClInclude Include="Engine\Camera.hpp" />
     <ClInclude Include="Engine\Components\IWorld.hpp" />

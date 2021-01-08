@@ -31,7 +31,7 @@ Camera** d_camera;
 curandState* d_rand_state;
 curandState* d_rand_state2;
 float alpha = 0.0f;
-int numObjects = 1 * 22 + 1 + 3;
+int numObjects = 22 * 22 + 1 + 3;
 
 __global__ 
 void rand_init(curandState* rand_state) 

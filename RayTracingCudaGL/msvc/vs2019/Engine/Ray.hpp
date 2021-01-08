@@ -22,3 +22,4 @@ public:
   Vec3 orig;
   Vec3 dir;
 };
+
