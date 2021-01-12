@@ -12,24 +12,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\main.cpp" />
     <ClCompile Include="Engine\Shader\GLSLProgram.cpp" />
     <ClCompile Include="Engine\Input\Input.cpp" />
     <ClCompile Include="Engine\Config\Config.cpp" />
+    <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\src\gl_tools.h">
-      <Filter>gl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\glfw_tools.h">
-      <Filter>gl</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\libs\helper_cuda.h">
-      <Filter>cuda</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\src\libs\helper_string.h">
-      <Filter>cuda</Filter>
-    </ClInclude>
     <ClInclude Include="Engine\Math\Vec3.hpp" />
     <ClInclude Include="Engine\Ray.hpp" />
     <ClInclude Include="Engine\Shader\GLSLProgram.hpp" />
@@ -49,12 +37,14 @@
     <ClInclude Include="Assets\Materials\Metal.hpp" />
     <ClInclude Include="Assets\Materials\Lambertian.hpp" />
     <ClInclude Include="Assets\Materials\Dielectric.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <CudaCompile Include="..\..\src\kernel.cu" />
+    <ClInclude Include="glfw_tools.h" />
+    <ClInclude Include="gl_tools.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Shaders\OpaqueShader.vert" />
     <None Include="Assets\Shaders\OpaqueShader.frag" />
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="kernel.cu" />
   </ItemGroup>
 </Project>
