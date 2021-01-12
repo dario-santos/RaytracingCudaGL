@@ -239,8 +239,6 @@ int main(int argc, char *argv[])
 		glfwWaitEvents();
 	}
 
-	free_world();
-
 	glfwDestroyWindow(window);
 	glfwTerminate();
 	exit(EXIT_SUCCESS);

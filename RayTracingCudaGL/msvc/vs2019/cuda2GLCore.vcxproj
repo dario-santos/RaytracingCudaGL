@@ -34,7 +34,6 @@
     <ClInclude Include="Assets\Materials\Metal.hpp" />
     <ClInclude Include="Assets\Worlds\World1.cuh" />
     <ClInclude Include="Engine\Camera.hpp" />
-    <ClInclude Include="Engine\Components\IWorld.hpp" />
     <ClInclude Include="Engine\Config\Config.hpp" />
     <ClInclude Include="Engine\Hitable.hpp" />
     <ClInclude Include="Engine\HitableList.hpp" />
@@ -61,6 +60,7 @@
     <ProjectGuid>{6539033A-8268-48FE-AEFA-BF1FF83DA9A5}</ProjectGuid>
     <RootNamespace>cuda2GLCore</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>RaytracingCudaGL</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

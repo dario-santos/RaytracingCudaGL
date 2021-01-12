@@ -27,58 +27,48 @@ using glm::vec3;
 // Variables
 Sphere** d_list;
 Sphere** d_world;
+
 Camera** d_camera;
+
 curandState* d_rand_state;
 curandState* d_rand_state2;
+
 float alpha = 0.0f;
 int numObjects = 22 * 22 + 1 + 3;
 
-__global__ 
-void rand_init(curandState* rand_state) 
+/**
+ * rand_init
+ * 
+ * \param rand_state The random object
+ */
+__global__ void rand_init(curandState* rand_state) 
 {
-  if (threadIdx.x == 0 && blockIdx.x == 0)
+  if(threadIdx.x == 0 && blockIdx.x == 0)
     curand_init(1984, 0, 0, rand_state);
 }
 
-
-extern "C"
-void launch_cudaRender(dim3 blocks, dim3 threads, unsigned int* g_odata, int max_x, int max_y)
+extern "C" void launch_cudaRender(dim3 blocks, dim3 threads, unsigned int* g_odata, int max_x, int max_y)
 {
-  int ns = 2;
+  int ns = 10;
 
-  render_init <<<blocks, threads>>> (max_x, max_y, d_rand_state);
+  RenderRandInit<<<blocks, threads>>>(max_x, max_y, d_rand_state);
   checkCudaErrors(cudaGetLastError());
   checkCudaErrors(cudaDeviceSynchronize());
 
   // Camera alfa
-  alpha += 0.5f;
-  Vec3 v = Vec3(glm::cos(alpha) + 5, 7.0f, 7.0f);
+  alpha += 0.5f / 3.1415f;
+  Vec3 v = Vec3(glm::cos(alpha) + 5, 2.5f, 15);
 
-  update << <blocks, threads >> > (d_camera, v);
+  update<<<blocks, threads >> > (d_camera, v);
   checkCudaErrors(cudaGetLastError());
   checkCudaErrors(cudaDeviceSynchronize());
 
-  render << <blocks, threads >> > (g_odata, max_x, max_y, ns, d_camera, d_world, d_rand_state);
+  Render<<<blocks, threads>>>(g_odata, max_x, max_y, ns, d_camera, d_world, d_rand_state);
   checkCudaErrors(cudaGetLastError());
   checkCudaErrors(cudaDeviceSynchronize());
 }
 
-
-extern "C"
-void free_world() 
-{
-  for(int i = 0; i < 22 * 22 + 1 + 3; i++) 
-  {
-    //delete ((Sphere*)d_list[i])->mat_ptr;
-    //delete d_list[i];
-  }
-
-  //delete* d_world;
-  //delete* d_camera;
-}
-
-extern "C"
-void create_world(int max_x, int max_y, int num_pixels)
+extern "C" void create_world(int max_x, int max_y, int num_pixels)
 { 
   // allocate random state
   checkCudaErrors(cudaMalloc((void**)&d_rand_state, num_pixels * sizeof(curandState)));  

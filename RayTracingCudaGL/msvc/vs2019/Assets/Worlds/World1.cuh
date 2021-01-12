@@ -1,6 +1,5 @@
 #pragma once
 
-#include <Engine/Components/IWorld.hpp>
 #include <Engine/Hitable.hpp>
 #include <Engine/HitableList.hpp>
 #include <Engine/Primitives/Sphere.hpp>
@@ -48,23 +47,22 @@ __global__ void create_world(Sphere** d_list, Sphere** d_world, Camera** d_camer
 
   Vec3 lookfrom(10, 2.5f, 15);
   Vec3 lookat(0, 0, 0);
-  float dist_to_focus = (lookfrom - lookat).length();
+  float dist_to_focus = (lookfrom - lookat).Length();
   float aperture = 0.2;
   *d_camera = new Camera(lookfrom, lookat, Vec3(0, 1, 0), 30.0, float(nx) / float(ny), aperture, dist_to_focus);
 }
 
-__global__
-void update(Camera** d_cam, Vec3 v)
+__global__ void update(Camera** d_cam, Vec3 v)
 {
   int i = threadIdx.x + blockIdx.x * blockDim.x;
 
   if (i == 0)
   {
-    Vec3 lookfrom = Vec3(v.x(), (*d_cam)->origin.z(), v.y());
+    Vec3 lookfrom = Vec3(v.x(), (*d_cam)->origin.y(), (*d_cam)->origin.z());
 
     Vec3 lookat(0, 0, 0);
 
-    // (*d_cam)->UpdatePos(lookfrom, lookat, Vec3(0, 1, 0));
+    (*d_cam)->UpdatePos(lookfrom, lookat, Vec3(0, 1, 0));
   }
 }
 
