@@ -49,6 +49,7 @@ __global__ void rand_init(curandState* rand_state)
 
 extern "C" void launch_cudaRender(dim3 blocks, dim3 threads, unsigned int* g_odata, int max_x, int max_y)
 {
+  // NS
   int ns = 10;
 
   RenderRandInit<<<blocks, threads>>>(max_x, max_y, d_rand_state);
@@ -74,7 +75,7 @@ extern "C" void create_world(int max_x, int max_y, int num_pixels)
   checkCudaErrors(cudaMalloc((void**)&d_rand_state, num_pixels * sizeof(curandState)));  
   checkCudaErrors(cudaMalloc((void**)&d_rand_state2, 1 * sizeof(curandState)));
 
-  rand_init<<<1, 1>>>(d_rand_state2);
+  rand_init<<<1,1>>>(d_rand_state2);
   checkCudaErrors(cudaGetLastError());
   checkCudaErrors(cudaDeviceSynchronize());
 

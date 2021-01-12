@@ -35,7 +35,6 @@ __global__ void create_world(Sphere** d_list, Sphere** d_world, Camera** d_camer
         d_list[i++] = new Sphere(center, 0.2, new Metal(Vec3(0.5f * (1.0f + RND), 0.5f * (1.0f + RND), 0.5f * (1.0f + RND)), 0.5f * RND));
       else
         d_list[i++] = new Sphere(center, 0.2, new Dielectric(1.5));
-
     }
   }
 
@@ -56,7 +55,7 @@ __global__ void update(Camera** d_cam, Vec3 v)
 {
   int i = threadIdx.x + blockIdx.x * blockDim.x;
 
-  if (i == 0)
+  if(i == 0)
   {
     Vec3 lookfrom = Vec3(v.x(), (*d_cam)->origin.y(), (*d_cam)->origin.z());
 
@@ -65,4 +64,3 @@ __global__ void update(Camera** d_cam, Vec3 v)
     (*d_cam)->UpdatePos(lookfrom, lookat, Vec3(0, 1, 0));
   }
 }
-

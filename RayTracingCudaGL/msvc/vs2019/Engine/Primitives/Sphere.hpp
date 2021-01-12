@@ -78,6 +78,5 @@ __device__ bool Sphere::Hit(const Ray& r, float t_min, float t_max, hit_record& 
       return true;
     }
   }
-
   return false;
 }
